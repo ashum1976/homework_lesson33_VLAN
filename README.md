@@ -50,7 +50,10 @@ ___
 
 Пинги между машинами в одном велане не пересекаются с пингами из второго велана. С помощью tcpdump-a в этом можно убедиться.
 
+![Пинг testServer1 c testClient1](Images/Ping_testClient2_testServer2.png)
 
+
+![Пинг testServer2 c testClient2](Images/Ping_testClient2_testServer2.png)
 
 
 
