@@ -1,0 +1,127 @@
+2021-06-28 09:54:33,999 p=2643167 u=andrey n=ansible | playbook: ./ansible/playbooks/vlan.yml
+2021-06-28 09:55:31,180 p=2643808 u=andrey n=ansible | playbook: ./ansible/playbooks/vlan.yml
+2021-06-28 09:56:12,131 p=2644104 u=andrey n=ansible | playbook: ./ansible/playbooks/vlan.yml
+2021-06-28 09:56:12,131 p=2644104 u=andrey n=ansible |   play #1 (net): Настройка маршрутизации  роутеров	TAGS: []
+2021-06-28 09:56:12,290 p=2644104 u=andrey n=ansible | ERROR! 'net' is undefined
+2021-06-28 09:58:36,824 p=2645088 u=andrey n=ansible | playbook: ./ansible/playbooks/vlan.yml
+2021-06-28 09:58:36,824 p=2645088 u=andrey n=ansible |   play #1 (routers,clients): Настройка маршрутизации  роутеров	TAGS: []
+2021-06-28 09:58:36,853 p=2645088 u=andrey n=ansible | ERROR! 'net' is undefined
+2021-06-28 10:01:09,569 p=2646177 u=andrey n=ansible | playbook: ./ansible/playbooks/vlan.yml
+2021-06-28 10:01:09,570 p=2646177 u=andrey n=ansible |   play #1 (routers,clients): Настройка маршрутизации  роутеров	TAGS: []
+2021-06-28 10:01:09,597 p=2646177 u=andrey n=ansible | ERROR! 'net' is undefined
+2021-06-28 10:05:15,975 p=2648099 u=andrey n=ansible | playbook: ./ansible/playbooks/vlan.yml
+2021-06-28 10:05:15,976 p=2648099 u=andrey n=ansible |   play #1 (net): Настройка маршрутизации  роутеров	TAGS: []
+2021-06-28 10:05:16,005 p=2648099 u=andrey n=ansible | ERROR! 'net' is undefined
+2021-06-28 10:06:47,904 p=2648751 u=andrey n=ansible | playbook: ./ansible/playbooks/vlan.yml
+2021-06-28 10:06:47,905 p=2648751 u=andrey n=ansible |   play #1 (net): Настройка маршрутизации  роутеров	TAGS: []
+2021-06-28 10:06:47,934 p=2648751 u=andrey n=ansible | ERROR! 'net' is undefined
+2021-06-28 10:07:36,567 p=2649303 u=andrey n=ansible | @all:
+  |--@net:
+  |  |--@clients:
+  |  |  |--testClient1
+  |  |  |  |--{ansible_host = 127.0.0.1}
+  |  |  |  |--{ansible_ssh_pass = vagrant}
+  |  |  |  |--{ansible_user = vagrant}
+  |  |  |  |--{dnf_install_all = ['mc', 'iptables-services', 'epel-release', 'tcpdump', 'nano', 'setools-console', 'setroubleshoot-server', 'iperf3.x86_64']}
+  |  |  |  |--{dnf_remove = ['firewalld']}
+  |  |  |--testClient2
+  |  |  |  |--{ansible_host = 127.0.0.1}
+  |  |  |  |--{ansible_ssh_pass = vagrant}
+  |  |  |  |--{ansible_user = vagrant}
+  |  |  |  |--{dnf_install_all = ['mc', 'iptables-services', 'epel-release', 'tcpdump', 'nano', 'setools-console', 'setroubleshoot-server', 'iperf3.x86_64']}
+  |  |  |  |--{dnf_remove = ['firewalld']}
+  |  |  |--testServer1
+  |  |  |  |--{ansible_host = 127.0.0.1}
+  |  |  |  |--{ansible_ssh_pass = vagrant}
+  |  |  |  |--{ansible_user = vagrant}
+  |  |  |  |--{dnf_install_all = ['mc', 'iptables-services', 'epel-release', 'tcpdump', 'nano', 'setools-console', 'setroubleshoot-server', 'iperf3.x86_64']}
+  |  |  |  |--{dnf_remove = ['firewalld']}
+  |  |  |--testServer2
+  |  |  |  |--{ansible_host = 127.0.0.1}
+  |  |  |  |--{ansible_ssh_pass = vagrant}
+  |  |  |  |--{ansible_user = vagrant}
+  |  |  |  |--{dnf_install_all = ['mc', 'iptables-services', 'epel-release', 'tcpdump', 'nano', 'setools-console', 'setroubleshoot-server', 'iperf3.x86_64']}
+  |  |  |  |--{dnf_remove = ['firewalld']}
+  |  |--@routers:
+  |  |  |--centralRouter
+  |  |  |  |--{ansible_host = 127.0.0.1}
+  |  |  |  |--{ansible_ssh_pass = vagrant}
+  |  |  |  |--{ansible_user = vagrant}
+  |  |  |  |--{dnf_install_all = ['mc', 'iptables-services', 'epel-release', 'tcpdump', 'nano', 'setools-console', 'setroubleshoot-server', 'iperf3.x86_64']}
+  |  |  |  |--{dnf_remove = ['firewalld']}
+  |  |  |--inetRouter
+  |  |  |  |--{ansible_host = 127.0.0.1}
+  |  |  |  |--{ansible_ssh_pass = vagrant}
+  |  |  |  |--{ansible_user = vagrant}
+  |  |  |  |--{dnf_install_all = ['mc', 'iptables-services', 'epel-release', 'tcpdump', 'nano', 'setools-console', 'setroubleshoot-server', 'iperf3.x86_64']}
+  |  |  |  |--{dnf_remove = ['firewalld']}
+  |  |  |  |--{route = [{'ip': '192.168.1.0', 'gw': '192.168.255.2'}, {'ip': '192.168.3.0', 'gw': '192.168.255.2'}, {'ip': '192.168.1.128', 'gw': '192.168.255.2'}]}
+  |  |  |--office1Router
+  |  |  |  |--{ansible_host = 127.0.0.1}
+  |  |  |  |--{ansible_ssh_pass = vagrant}
+  |  |  |  |--{ansible_user = vagrant}
+  |  |  |  |--{dnf_install_all = ['mc', 'iptables-services', 'epel-release', 'tcpdump', 'nano', 'setools-console', 'setroubleshoot-server', 'iperf3.x86_64']}
+  |  |  |  |--{dnf_remove = ['firewalld']}
+  |  |--{dnf_install_all = ['mc', 'iptables-services', 'epel-release', 'tcpdump', 'nano', 'setools-console', 'setroubleshoot-server', 'iperf3.x86_64']}
+  |  |--{dnf_remove = ['firewalld']}
+  |--@ungrouped:
+  |--{ansible_host = 127.0.0.1}
+  |--{ansible_ssh_pass = vagrant}
+  |--{ansible_user = vagrant}
+2021-06-28 10:08:01,146 p=2649588 u=andrey n=ansible | playbook: ./ansible/playbooks/vlan.yml
+2021-06-28 10:08:01,146 p=2649588 u=andrey n=ansible |   play #1 (net): Настройка маршрутизации  роутеров	TAGS: []
+2021-06-28 10:08:01,175 p=2649588 u=andrey n=ansible | ERROR! 'net' is undefined
+2021-06-28 10:09:32,357 p=2650501 u=andrey n=ansible | playbook: ./ansible/playbooks/vlan.yml
+2021-06-28 10:09:32,358 p=2650501 u=andrey n=ansible |   play #1 (routers): Настройка маршрутизации  роутеров	TAGS: []
+2021-06-28 10:09:32,389 p=2650501 u=andrey n=ansible | ERROR! 'net' is undefined
+2021-06-28 10:10:06,608 p=2650763 u=andrey n=ansible | playbook: ./ansible/playbooks/vlan.yml
+2021-06-28 10:10:06,608 p=2650763 u=andrey n=ansible |   play #1 (net): Настройка маршрутизации  роутеров	TAGS: []
+2021-06-28 10:10:06,613 p=2650763 u=andrey n=ansible |     tasks:
+      vlan : Конфигурация inetRouter	TAGS: [inetRouter]
+      vlan : Конфигурация центрального роутера centralRouter config networks	TAGS: [centralRouter]
+      vlan : Конфигурация office1Router	TAGS: [office1Router]
+      vlan : Конфигурация office2Router	TAGS: [office2Router]
+      vlan : Конфигурация testServer1	TAGS: [testServer1]
+      vlan : Конфигурация testServer2	TAGS: [testServer2]
+      vlan : Конфигурация testClient2	TAGS: [testClient2]
+      vlan : Конфигурация testClient1	TAGS: [testClient1]
+
+2021-06-28 10:59:33,327 p=2671550 u=andrey n=ansible | playbook: ./ansible/playbooks/vlan.yml
+2021-06-28 10:59:33,327 p=2671550 u=andrey n=ansible |   play #1 (net): Настройка маршрутизации  роутеров	TAGS: []
+2021-06-28 10:59:33,351 p=2671550 u=andrey n=ansible | ERROR! 'net' is undefined
+2021-06-28 10:59:58,404 p=2671728 u=andrey n=ansible | playbook: ./ansible/playbooks/vlan.yml
+2021-06-28 10:59:58,405 p=2671728 u=andrey n=ansible |   play #1 (net): Настройка маршрутизации  роутеров	TAGS: []
+2021-06-28 10:59:58,430 p=2671728 u=andrey n=ansible | ERROR! 'net' is undefined
+2021-06-28 11:02:24,649 p=2672851 u=andrey n=ansible | playbook: ./ansible/playbooks/vlan.yml
+2021-06-28 11:02:24,649 p=2672851 u=andrey n=ansible |   play #1 (net): Настройка маршрутизации  роутеров	TAGS: []
+2021-06-28 11:02:24,676 p=2672851 u=andrey n=ansible | ERROR! 'all' is undefined
+2021-06-28 11:03:15,914 p=2673280 u=andrey n=ansible | playbook: ./ansible/playbooks/vlan.yml
+2021-06-28 11:03:15,914 p=2673280 u=andrey n=ansible |   play #1 (net): Настройка маршрутизации  роутеров	TAGS: []
+2021-06-28 11:03:15,942 p=2673280 u=andrey n=ansible |     tasks:
+      vlan : Конфигурация inetRouter	TAGS: [inetRouter]
+      vlan : Конфигурация центрального роутера centralRouter config networks	TAGS: [centralRouter]
+      vlan : Конфигурация office1Router	TAGS: [office1Router]
+      vlan : Конфигурация office2Router	TAGS: [office2Router]
+      vlan : Конфигурация testServer1	TAGS: [testServer1]
+      vlan : Конфигурация testServer2	TAGS: [testServer2]
+      vlan : Конфигурация testClient2	TAGS: [testClient2]
+      vlan : Конфигурация testClient1	TAGS: [testClient1]
+      vlan : Настройка параметров sysctl	TAGS: [centralRouter, inetRouter, office1Router, testClient1, testClient2, testServer1, testServer2]
+      vlan : Установить пакеты 	TAGS: [centralRouter, inetRouter, office1Router, testClient1, testClient2, testServer1, testServer2]
+
+2021-06-28 11:57:16,155 p=2697087 u=andrey n=ansible | playbook: ./ansible/playbooks/vlan.yml
+2021-06-28 11:57:16,155 p=2697087 u=andrey n=ansible |   play #1 (net): Настройка маршрутизации  роутеров	TAGS: []
+2021-06-28 11:57:16,190 p=2697087 u=andrey n=ansible |     tasks:
+      vlan : Конфигурация inetRouter	TAGS: [inetRouter]
+      vlan : Конфигурация центрального роутера centralRouter config networks	TAGS: [centralRouter]
+      vlan : Конфигурация office1Router	TAGS: [office1Router]
+      vlan : Конфигурация office2Router	TAGS: [office2Router]
+      vlan : Конфигурация testServer1	TAGS: [testServer1]
+      vlan : Конфигурация testServer2	TAGS: [testServer2]
+      vlan : Конфигурация testClient2	TAGS: [testClient2]
+      vlan : Конфигурация testClient1	TAGS: [testClient1]
+      vlan : Настройка параметров sysctl	TAGS: [centralRouter, inetRouter, office1Router, testClient1, testClient2, testServer1, testServer2]
+      vlan : Рестарт сети с новыми параметрами интерфейсов	TAGS: [centralRouter, inetRouter, office1Router, testClient1, testClient2, testServer1, testServer2]
+      vlan : Установить пакеты 	TAGS: [centralRouter, inetRouter, office1Router, testClient1, testClient2, testServer1, testServer2]
+
+2021-06-28 11:57:39,986 p=2697254 u=andrey n=ansible | playbook: ./ansible/playbooks/vlan.yml

@@ -1,0 +1,8 @@
+---
+- name: 'Настройка маршрутизации  роутеров'
+  hosts:
+    - net
+  become: True
+  gather_facts: True
+  roles:
+    - vlan

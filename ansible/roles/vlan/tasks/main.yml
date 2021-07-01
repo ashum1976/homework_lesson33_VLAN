@@ -1,0 +1,138 @@
+---
+# tasks file for vlan
+
+- name: "Создание файлов для bond интерфейса, modprobe"
+  template:
+    src: "bond.conf.j2"
+    dest: "/etc/modprobe.d/bonding.conf"
+    owner: root
+    group: root
+    mode: 0640
+  tags:
+    - inetRouter
+    - centralRouter
+
+- name: "Создание файлов для bond интерфейса. Интерфейс bond"
+  template:
+    src: "{{ ansible_hostname }}ifcfg-bond0.j2"
+    dest: "/etc/sysconfig/network-scripts/ifcfg-bond0"
+    owner: root
+    group: root
+    mode: 0640
+  tags:
+    - inetRouter
+    - centralRouter
+
+- name: "Создание файлов для bond интерфейса. Интерфейсы eth1 "
+  template:
+    src: "{{ ansible_hostname }}eth1.j2"
+    dest: "/etc/sysconfig/network-scripts/ifcfg-eth1"
+    owner: root
+    group: root
+    mode: 0640
+  tags:
+    - inetRouter
+    - centralRouter
+
+
+- name: "Создание файлов для bond интерфейса. Интерфейсы eth3 "
+  template:
+    src: "{{ ansible_hostname }}eth3.j2"
+    dest: "/etc/sysconfig/network-scripts/ifcfg-eth3"
+    owner: root
+    group: root
+    mode: 0640
+  tags:
+    - inetRouter
+    - centralRouter
+
+- name: "Рестарт сети с новыми параметрами интерфейсов"
+  systemd:
+    name: network.service
+    state:  restarted
+  tags:
+    - inetRouter
+    - centralRouter
+
+
+- name: 'Конфигурация inetRouter'
+  script: inetRouter.sh
+  tags: inetRouter
+
+- name: 'Конфигурация центрального роутера centralRouter config networks'
+  script: centralRouter.sh
+  tags: centralRouter
+
+- name: 'Конфигурация office1Router'
+  script: office1Router.sh
+  tags: office1Router
+
+
+- name: 'Конфигурация testServer1'
+  script: testServer1.sh
+  tags: testServer1
+
+- name: 'Конфигурация testServer2'
+  script: testServer2.sh
+  tags: testServer2
+
+- name: 'Конфигурация testClient2'
+  script: testClient2.sh
+  tags: testClient2
+
+- name: 'Конфигурация testClient1'
+  script: testClient1.sh
+  tags: testClient1
+
+
+- name: Настройка параметров sysctl
+  sysctl:
+      name: net.ipv4.conf.all.forwarding
+      value: '1'
+      state:  present
+      sysctl_set: yes
+      reload: yes
+  tags:
+    - "{{ all_hosts }}"
+
+
+- name: "Рестарт сети с новыми параметрами интерфейсов"
+  systemd:
+    name: network.service
+    state:  restarted
+  tags:
+    - "{{ all_hosts }}"
+
+
+- name: "Рестарт сети с новыми параметрами интерфейсов office1Router"
+  systemd:
+    name: network.service
+    state:  restarted
+  tags:
+    - office1Router
+#Удалить пакеты
+## Общие пакеты для всех серверов
+- name: "Удалить пакеты "
+  yum:
+    name: "{{ dnf_remove }}"
+    state: absent
+  tags:
+    - "{{ all_hosts }}"
+
+- name: "Установить пакеты "
+  yum:
+    name: "{{ dnf_install_all }}"
+    state: present
+    disable_gpg_check:  yes
+  tags:
+    - "{{ all_hosts }}"
+
+
+- name: "Установка vlan адресов на интерфейсах"
+  script:
+      "vlan_bond/{{ ansible_hostname }}vlan.sh"
+  tags:
+    - testClient1
+    - testClient2
+    - testServer1
+    - testServer2

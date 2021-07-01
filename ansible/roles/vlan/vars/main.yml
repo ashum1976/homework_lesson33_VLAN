@@ -1,0 +1,12 @@
+---
+# vars file for vlan
+all_hosts:
+    - centralRouter
+    - inetRouter
+    - office1Router
+    - testClient1
+    - testClient2
+    - testServer1
+    - testServer2
+
+    

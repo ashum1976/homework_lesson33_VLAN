@@ -1,0 +1,13 @@
+dnf_remove:
+      - firewalld
+
+dnf_install_all:
+      - mc
+      - iptables-services
+      - epel-release
+      - tcpdump
+      - nano
+      - setools-console
+      - setroubleshoot-server
+      - iperf3.x86_64
+      # - net-tools
