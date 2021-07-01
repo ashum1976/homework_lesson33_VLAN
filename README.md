@@ -23,15 +23,15 @@ testServer2- 10.10.10.1
 
 сетевые интерфейсы, участвующие в создании отказоустойчивого и агреггированого канала, на базе bond0 интерфейсов на каждой машине:
 
-      inetRouter:
+inetRouter:
 
-          [Параметры сетевой карты eth1](ansible/roles/vlan/templates/inetRoutereth1.j2)
-          [Параметры сетевой карты eth3](ansible/roles/vlan/templates/inetRoutereth3.j2)
+[Параметры сетевой карты eth1](ansible/roles/vlan/templates/inetRoutereth1.j2)  
+[Параметры сетевой карты eth3](ansible/roles/vlan/templates/inetRoutereth3.j2)  
 
-      centralRouter:
+centralRouter:
 
-          [Параметры сетевой карты eth1](ansible/roles/vlan/templates/centralRoutereth1.j2)
-          [Параметры сетевой карты eth3](ansible/roles/vlan/templates/centralRoutereth3.j2)
+[Параметры сетевой карты eth1](ansible/roles/vlan/templates/centralRoutereth1.j2)  
+[Параметры сетевой карты eth3](ansible/roles/vlan/templates/centralRoutereth3.j2)  
 
 ___
 
